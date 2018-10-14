@@ -1,0 +1,18 @@
+.PHONY: pep8
+pep8:
+	pycodestyle --config setup.cfg --show-source cvx_ha/
+
+.PHONY: lint
+lint:
+	pylint cvx_ha/
+
+.PHONY: codestyle
+codestyle: pep8 lint
+
+.PHONY: configure
+configure:
+	if [ ! -f .git/hooks/pre-commit ]; then ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit; fi;
+
+.PHONY: install
+install:
+	pip install -e . --process-dependency-links
