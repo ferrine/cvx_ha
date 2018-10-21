@@ -1,0 +1,4 @@
+python-igraph
+cvxopt
+seaborn
+scipy
